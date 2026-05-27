@@ -1,0 +1,151 @@
+
+
+
+
+
+
+
+
+TIA PORTAL DOCUMENTATION
+
+                                                               By - Vijeet Gahlawat
+       Date - April 1st, 2025
+
+1. Introduction
+This document provides a detailed step-by-step guide for new students to access and operate the TIA Portal on the Intelligent Cyber-Physical Systems (I-CPS) laboratory's Workstation. It explains how to remotely connect to the Programmable Logic Controller (PLC) using Workstation 2 (WS 2) and how to monitor and test equipment in the lab. 
+
+Figure 1. PLC.
+2. Understanding the Lab Network Setup* PLC and WS 2 Connection: 
+* The PLC and WS 2 are directly connected using an Ethernet cable, allowing remote access to the PLC from WS 2. Ethernet cable connects Main switch of the PLC with the WS 2 CPU using a blue cable as shown in figure 2.
+* The PLC can also be connected to any other workstation using the same Ethernet cable.
+      
+Figure 2. Main Switch(left) and Workstation 2 CPU (right).
+
+* Internet Connectivity: 
+* WS 2 can connect to the internet via the Wi-Fi network ROBOTS.
+* Important Note: Do not connect the PLC remote access to the internet, as this may trigger Windows updates, leading to inconsistencies in installed software versions.
+3. Logging into WS 2
+1. Power on WS 2 and select Windows as the operating system.
+2. System Login: 
+* A special account is required for login. If you do not have the password, seek assistance from the lab technician Mr. Jean Ghandous.
+* Alternatively, a local account can be created on WS 2 depending on project requirements.
+3. After successful login, the WS 2 desktop will be accessible.
+4. Available Resources: 
+* Icons for frequently used applications are located at the center of the desktop as shown in Figure 3.
+* A folder named "CRVI" contains documentation related to TIA Portal and other equipment. It also contains a 13-chapter training course for learning how to use TIA Portal.
+* A text file named "password" on the desktop contains IP addresses, usernames, and passwords for Sensors, Robots, PLC, Edge PC, and Access Points.
+
+
+Figure 3. Workstation 2 Desktop.
+4. Setting Up Personal Work Environment
+* Each student should create a personal folder with their name as folder name on the WS 2 desktop inside the folder named "Students" that already exists on the WS 2 desktop as shown in figure 3.
+* This folder should be used to store documents, pictures, and files related to the student's work.
+5. Accessing the PLC Remotely
+* TIA Portal is NOT installed on WS 2.
+* To access the PLC remotely: 
+* Locate the Remote Desktop icon on the centre of WS 2 desktop.
+* The PLC's IP address and username are already configured in the remote desktop settings, if not configured they are present in the "password" file.
+* Find the PLC's password in the "password" text file and enter it when prompted.
+Once the password is entered, the PLC desktop becomes accessible, as shown in Figure 5. At this stage, users can access the TIA Portal and other relevant software applications.
+
+6. Accessing Equipment via Web Browser
+* User Interface for the equipments like MV540, RFID sensors, Cognex Camera, Mobile robot and Arm robot can be accessed directly from a web browser.
+* Steps to access an equipment: 
+1. Open any web browser on WS 2.
+2. Locate the IP address, username, and password for the desired equipment from the password text file.
+3. Enter the IP address in the browser's address bar.
+4. Use the corresponding username and password to log in.
+5. Once logged in, the Siemens Simatic software interface will be accessible.
+6. Perform real-time operations and monitoring.
+7. Software PLC
+* SIMATIC IT is Siemens' Manufacturing Execution System (MES) used to manage equipment processes.
+* To access SIMATIC IT: 
+* Locate the Software PLC icon at the Centre of the PLC desktop.
+* Open the software, and an interface will appear on desktop as shown in Figure 4.
+* Check the PLC connection status. If the connection is not active, enable it.
+
+Figure 4. Software PLC interface
+8. Accessing TIA Portal V18
+* TIA Portal (Totally Integrated Automation Portal) Version 18 is installed on the PLC.
+* To open TIA Portal: 
+* Locate the TIA V18 icon at the centre of the PLC desktop as shown in Figure 5.
+* Double-click to launch the software.
+
+Figure 5. PLC Desktop.
+9. Starting a Project in TIA Portal
+1. Open TIA Portal V18.
+2. Choose whether to create a new project or upload an existing project on the TIA portal UI as shown in figure 6 and figure 7.
+3. It is recommended to start with project "Test_CPS_POLY.zap18". This project can be used as a base to start a new project. The " Test_CPS_POLY.zap18" contains a preconfigured lab setup for monitoring all lab equipment.
+* Located in "VERSIONS TIA' -> Test" folder.
+* Do not modify the original "Base project".
+* Each student should create a personal folder with their name as folder name on the PLC desktop inside the folder named "Students" that already exists on the PLC desktop. Students can copy the base project to their personal folder to modify it.
+
+Figure 6. TIA portal User Interface.
+
+Figure 7. User Interface after selecting a Project.
+
+10. Monitoring Equipment in TIA Portal
+Going Online
+1. Click "Go Online" in the toolbar above the Project Tree.
+2. Click "Connect" to establish a connection with the PLC.
+Use HMI Block for Monitoring
+* The HMI_DATA Block is located at: _StationENG_Control -> ENG_Control -> Software PLC -> Program blocks -> HMI_DATA[DB13] as shown in the figure 8.
+* In Expanded Mode shown in figure 9, you can view and utilize all the available features for all the equipment to perform tests.
+* In addition, when you go online, the HMI data table adds two columns for monitoring equipment. Monitor Value column to Display real-time values and Snapshot column to displaying previously recorded values
+
+Figure 8. HMI Data table.
+
+Figure 9. HMI table in Expanded mode
+11. Running Tests on Equipment
+* Each piece of equipment follows a specific sequence of actions for testing.
+* Example: Testing MV540 (QR Code Reader) 
+1. Access MV540 interface via web browser: 
+* Open a web browser and enter the address provided in the password file. Enter the corresponding username and password to log in.
+* Once logged in, the MV540 interface will appear, as shown in Figure 10.
+* Click on New Program and select a program from the available options.
+2. Reset the Reader: 
+* Go to HMI data Block in Tia Portal as shown in figure 11.
+* Double-click "readReset" under the Monitor Value column.
+* This clears previous data.
+3. Start a New Read Request: 
+* Double-click "readRequest".
+* If the QR reader is successful, the encoded message appears in "readData".
+* If unsuccessful, a read error message appears.
+
+Figure 10. MV540 interface on Browser.
+* Example: RFID sensors 
+1. Reset the RFID sensor: 
+* Go to the HMI data block in TIA Portal.
+* Double-click "Read Reset" in the Monitor Value column.
+* This clears previous read data and resets any error states.
+2. Start a New Read Request: 
+* Double-click "Read Request" to initiate a new RFID read operation.
+* If the RFID scan is successful - "Read Data Available" changes to TRUE. The scanned RFID data appears in "Read Data". "Read Data Length" shows the length of the received data.
+* If the scan fails - "Read Error" changes to TRUE and Read Error Message" displays an error description.
+* Example: Cognex camera 
+1. Reset the Cognex camera: 
+* Go to the HMI data block in TIA Portal.
+* Double-click "Read Reset" in the Monitor Value column.
+* This clears previous read data and resets any error states.
+2. Start a New Read Inspection Request: 
+* Double-click "Trigger Enable" and set it to TRUE to enable the camera for triggering.
+* After enabling, double-click "Trigger" and set it to TRUE to initiate the inspection.
+* If the inspection is successful - "Inspection Completed" changes to TRUE, and "Inspection Results" contains the inspection result value. "Inspection Results Code" will display the associated result code.
+* If the inspection fails -"Inspection Completed" remains FALSE and "Inspection Results Message" will show an error message detailing the issue
+
+Figure 11. HMI data in Expanded and Online mode.
+
+12. Monitoring Proximity Sensors via PLC Tags
+* Proximity sensors are located in IO Link Sensor shown in figure 12.
+* Path to Proximity Sensors: _StationENG_Control -> ENG_Control -> Software PLC -> PLC tags -> IO Link Sensor
+* Steps to Monitor Proximity Sensors: 
+1. Click "Go Online".
+2. Click "Monitor".
+3. The Monitor Value column will display real-time data.
+
+Figure 12. IO Link Sensor table.13. Conclusion
+By following the steps outlined in this document, students can successfully access and operate the TIA Portal, remotely monitor lab equipment, and perform testing procedures. This guide ensures smooth operations and helps maintain consistency and efficiency in the lab setup. Proper usage of remote access, HMI blocks, and PLC tags will allow for effective monitoring and control of industrial processes.
+
+
+TIA Portal Documentation [Vijeet Gahlawat, March 6th, 2025]                                                                                   2
+

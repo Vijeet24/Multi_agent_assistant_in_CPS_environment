@@ -1,0 +1,16 @@
+icps_data_query_answering_task: 
+  description: >
+    You are given a query or assignment: {assignment}.
+    Your task is to answer it using the attached ICPS Lab text documents called tia_doc.txt and CSV files called csv_data.csv.
+    Extract relevant information, perform analysis if needed, and use Python when computation or processing is required.
+    You can use the code interpreter tool to execute Python code.and generate visualizations like charts, plots, etc. from attached csv_data.csv file.
+
+  expected_output: >
+    A single text file containing:
+    1. Python code used (if applicable)
+    2. Output of the code
+    3. Final answer derived from ICPS Lab text document
+
+  agent: lab_analyst
+
+  output_file: output/icps_code_and_results.txt

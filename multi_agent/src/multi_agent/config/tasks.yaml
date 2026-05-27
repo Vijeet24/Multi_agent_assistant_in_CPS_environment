@@ -1,0 +1,95 @@
+manager_task:
+  description: >
+    Analyze the user query, determine which specialized agent or agents are required,
+    delegate the task appropriately, and combine all agent responses into one final response.
+    User query: {user_query}
+    IMPORTANT: Only output the final response in markdown format.
+  expected_output: >
+    A complete markdown response generated using the outputs from the selected agents.
+  agent: manager_agent
+  output_file: output/final_response.md
+
+connection_setup_task:
+  description: >
+    Answer the user query related to industrial network setup, PLC communication,
+    device connectivity, communication protocols, or connection troubleshooting.
+    Use the connection setup documents and tools to generate the response.
+    User query: {user_query}
+    Data file to use: data/connection_setup_docs.txt
+    IMPORTANT: Only output the response in markdown format.
+  expected_output: >
+    A markdown response explaining the required connection setup steps,
+    troubleshooting guidance, or communication procedures.
+  agent: agent_1_connection_specialist
+  output_file: output/connection_response.md
+
+software_operations_task:
+  description: >
+    Answer the user query related to TIA Portal operations, PLC programming,
+    HMI configuration, software setup, tag management, or industrial software procedures.
+    Use the software operation documents and tools to generate the response.
+    User query: {user_query}
+    Data file to use: data/software_operations_docs.txt
+    IMPORTANT: Only output the response in markdown format.
+  expected_output: >
+    A markdown response explaining the required software operations,
+    configurations, or troubleshooting procedures.
+  agent: agent_2_software_operations_specialist
+  output_file: output/software_operations_response.md
+
+maintenance_task:
+  description: >
+    Answer the user query related to equipment maintenance,
+    troubleshooting, fault diagnosis, or repair procedures.
+    Use the maintenance documents and tools to generate the response.
+    User query: {user_query}
+    Data file to use: data/maintenance_docs.txt
+    IMPORTANT: Only output the response in markdown format.
+  expected_output: >
+    A markdown response providing maintenance guidance,
+    troubleshooting steps, or fault analysis.
+  agent: agent_3_maintenance_specialist
+  output_file: output/maintenance_response.md
+
+realtime_monitoring_task:
+  description: >
+    Analyze the current structured/tabular data to answer queries related to
+    live equipment status, sensor values, operational conditions,
+    alarms, or real-time monitoring information.
+    Use Python tools when analysis is required.
+    User query: {user_query}
+    Data file to use: data/current_operational_data.csv
+    IMPORTANT: Only output the response in markdown format.
+  expected_output: >
+    A markdown response containing the current operational status,
+    equipment conditions, or real-time monitoring insights.
+  agent: agent_4_realtime_status_analyst
+  output_file: output/realtime_status_response.md
+
+historical_analysis_task:
+  description: >
+    Analyze historical structured/tabular data to answer queries related to
+    trend analysis, statistical analysis, KPI evaluation,
+    anomaly detection, or performance comparison.
+    Use Python analysis tools when calculations are required.
+    User query: {user_query}
+    Data file to use: data/historical_operational_data.csv
+    IMPORTANT: Only output the response in markdown format.
+  expected_output: >
+    A markdown report containing statistical analysis,
+    trend insights, calculations, and historical performance evaluation.
+  agent: agent_5_historical_analysis_specialist
+  output_file: output/historical_analysis_response.md
+
+visualization_task:
+  description: >
+    Generate charts, graphs, or visual trend analysis using historical structured/tabular data.
+    Use Python visualization tools to create the required plots and explain the findings.
+    User query: {user_query}
+    Data file to use: data/historical_operational_data.csv
+    IMPORTANT: Only output the response in markdown format.
+  expected_output: >
+    A markdown report containing generated visualizations,
+    trend analysis, and graphical insights from the historical data.
+  agent: agent_6_visualization_specialist
+  output_file: output/visualization_response.md

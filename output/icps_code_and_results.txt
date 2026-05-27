@@ -1,0 +1,1 @@
+The information regarding which workstation is connected to the PLC was found in the text file "ICPS_Lab_Network_Setup.txt." The specific workstation identified is "Workstation A," which is directly connected to the PLC for monitoring and control purposes. This connection aids in the seamless operation and data retrieval from the PLC system.

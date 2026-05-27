@@ -1,0 +1,21 @@
+Here is the complete content including the code and its output:
+
+```python
+def print_asterisk_pattern(n):
+    for i in range(1, n + 1):
+        print('*' * i)
+
+# Set the number of lines for the asterisk pattern
+n = 5  # You can change this value to print more or fewer lines
+print_asterisk_pattern(n)
+```
+
+Output of the code:
+
+```
+*
+**
+***
+****
+*****
+```

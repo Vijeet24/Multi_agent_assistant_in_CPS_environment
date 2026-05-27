@@ -1,0 +1,41 @@
+The code for plotting the bar chart has been executed successfully. I've created a plot of the total values of the orders in CAD and saved it as 'total_order_values_cad.png'. 
+
+Now, I will compile the necessary components into the final answer.
+
+```
+# Python Code Used
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load CSV data
+df = pd.read_csv('csv_data.csv')
+
+# Filter for orders in CAD
+df_cad = df[df['currency'] == 'CAD']
+
+# Calculate total values of each order
+df_cad['total_value'] = df_cad['quantity_ordered'] * df_cad['unit_price']
+
+# Group by po_number and sum total values
+bar_data = df_cad.groupby('po_number')['total_value'].sum()
+
+# Plotting
+total_orders = bar_data.index
+total_values = bar_data.values
+plt.bar(total_orders, total_values, color='blue')
+plt.xlabel('Purchase Order Number')
+plt.ylabel('Total Order Value (CAD)')
+plt.title('Total Order Values in CAD')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('total_order_values_cad.png')
+plt.show()
+```
+
+# Output of the code
+The output of the code is a bar chart saved as 'total_order_values_cad.png'.
+
+# Final Answer Derived from ICPS Lab Text Document
+The total values of the orders in CAD were successfully calculated and visualized in a bar chart. The information from the CSV was essential in deriving the order totals based on the ordered quantities and unit prices.
+
+The generated bar chart illustrates the total order values for each purchase order number in CAD.
